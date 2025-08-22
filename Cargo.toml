@@ -104,3 +104,6 @@ assets = [
 
 [workspace.package]
 rust-version = "1.74"
+
+[dependencies.aws-lc-rs]
+version = "=1.13.3"
