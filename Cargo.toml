@@ -29,11 +29,11 @@ include = [
 
 [workspace.package]
 version = "0.6.0-dev"
-rust-version = "1.85"
+rust-version = "1.82"
 authors = ["Librespot Org"]
 license = "MIT"
 repository = "https://github.com/librespot-org/librespot"
-edition = "2024"
+edition = "2021"
 
 [features]
 default = ["native-tls", "rodio-backend", "with-libmdns"]
@@ -210,3 +210,15 @@ assets = [
     ["contrib/librespot.service", "lib/systemd/system/", "644"],
     ["contrib/librespot.user.service", "lib/systemd/user/", "644"],
 ]
+
+# lock to a version that buildroot's bindgen can support
+[dependencies.aws-lc-rs]
+version = "=1.13.3"
+
+# these packages need to be locked to 2021 edition compatible versions
+[dependencies.base64ct]
+version = "=1.7.2"
+
+# force version 0.18.0, which supports 2021 edition
+[patch.crates-io]
+cfg-expr = { git = "https://github.com/EmbarkStudios/cfg-expr.git", rev = "377b9b53460c1ad7eef5cf632f4d574c58a11b0e" }
